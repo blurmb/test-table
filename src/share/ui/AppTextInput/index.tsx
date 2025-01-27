@@ -1,7 +1,6 @@
 import React, {
   forwardRef,
   InputHTMLAttributes,
-  PropsWithChildren,
 } from "react";
 import * as styles from "./AppTextInput.module.scss";
 
