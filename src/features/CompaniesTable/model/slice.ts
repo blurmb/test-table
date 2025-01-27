@@ -15,8 +15,15 @@ export const tableSlice = createSlice({
   name: "table",
   initialState,
   reducers: {
-    addItem: (state, action: PayloadAction<Omit<Company, "id">>) => {
-      state.items.push({ ...action.payload, id: Date.now().toString() });
+    addItem: (
+      state,
+      action: PayloadAction<Omit<Company, "id" | "checked">>,
+    ) => {
+      state.items.push({
+        ...action.payload,
+        id: Date.now().toString(),
+        checked: false,
+      });
     },
     removeItem: (state, action: PayloadAction<string>) => {
       state.items = state.items.filter((item) => item.id !== action.payload);
