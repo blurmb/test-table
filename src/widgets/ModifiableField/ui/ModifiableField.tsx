@@ -48,7 +48,7 @@ export const ModifiableField = ({ text, onChange }: ModifiableFieldProps) => {
           onChange={handleTextChange}
         />
         <AppButton size="small" className={styles.child} onClick={handleSave}>
-          Save
+          Сохранить
         </AppButton>
         <AppButton
           size="small"
@@ -56,7 +56,7 @@ export const ModifiableField = ({ text, onChange }: ModifiableFieldProps) => {
           className={styles.child}
           onClick={handleCancel}
         >
-          Cancel
+          Отменить
         </AppButton>
       </div>
     );
