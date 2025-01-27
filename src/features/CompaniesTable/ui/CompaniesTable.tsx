@@ -11,6 +11,7 @@ import { TableRow } from "./CompanyRow";
 import { VirtualizedTable } from "./VirtualizedTable";
 import { isAllChecked } from "../model/selectors";
 import { AppButton } from "@src/share/ui/AppButton";
+import { AppTextInput } from "@src/share/ui/AppTextInput";
 
 export const CompaniesTable = () => {
   return (
@@ -75,14 +76,12 @@ const NewCompanyForm = () => {
   };
   return (
     <div className={styles.new_company_form}>
-      <input
-        type="text"
+      <AppTextInput
         placeholder="Название компании"
         value={newCompanyName}
         onChange={(e) => setNewCompanyName(e.target.value)}
       />
-      <input
-        type="text"
+      <AppTextInput
         placeholder="Адрес компании"
         value={newCompanyAddress}
         onChange={(e) => setNewCompanyAddress(e.target.value)}
