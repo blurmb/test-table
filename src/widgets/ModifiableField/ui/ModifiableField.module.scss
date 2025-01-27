@@ -1,0 +1,10 @@
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+
+  .child {
+    margin: 0;
+    padding: 5px;
+  }
+}

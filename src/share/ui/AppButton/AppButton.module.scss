@@ -1,13 +1,47 @@
 .button {
-  background-color: var(--primary-color);
   color: var(--text-color-secondary);
   border: none;
-  padding: 10px 15px;
-  font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 
-  &:hover {
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
     background-color: var(--secondary-color);
   }
+
+  &.small {
+    padding: 5px 10px;
+    font-size: 14px;
+  }
+
+  &.large {
+    padding: 15px 20px;
+    font-size: 18px;
+  }
+
+  &.medium {
+    padding: 10px 15px;
+    font-size: 16px;
+  }
+
+  &.primary {
+    background-color: var(--primary-color);
+  }
+
+  &.secondary {
+    background-color: var(--secondary-color);
+  }
+
+  &.danger {
+    background-color: color-mix(in srgb, var(--reject-color) 85%, transparent);
+
+    &:hover {
+      background-color: var(--reject-color);
+    }
+  }
+
 }

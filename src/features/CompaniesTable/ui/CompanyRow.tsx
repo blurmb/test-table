@@ -1,9 +1,9 @@
 import React, { memo, PropsWithChildren, useCallback, useRef } from "react";
 import { useDispatch } from "react-redux";
-import { setCheckedById, toggleChecked } from "../model/slice";
+import { setCheckedById, setData } from "../model/slice";
 import { useAppSelector } from "@src/store/hooks";
 import { getCompanyById } from "../model/selectors";
-
+import { ModifiableField } from "@src/widgets/ModifiableField";
 import * as styles from "./CompanyRow.module.scss";
 
 interface CompanyRowProps {
@@ -27,8 +27,30 @@ export const CompanyRow = memo(({ companyId }: CompanyRowProps) => {
     );
   }, [company]);
 
-  const checkboxRef = useRef<HTMLInputElement>(null);
+  const handleNameChange = useCallback(
+    (text: string) => {
+      dispatch(
+        setData({
+          id: company.id,
+          name: text,
+        }),
+      );
+    },
+    [company],
+  );
+  const handleAddressChange = useCallback(
+    (text: string) => {
+      dispatch(
+        setData({
+          id: company.id,
+          address: text,
+        }),
+      );
+    },
+    [company],
+  );
 
+  const checkboxRef = useRef<HTMLInputElement>(null);
   return (
     <TableRow>
       <div onClick={() => checkboxRef.current?.click()}>
@@ -39,8 +61,8 @@ export const CompanyRow = memo(({ companyId }: CompanyRowProps) => {
           onChange={handleCheckboxChange}
         />
       </div>
-      <div>{company.name}</div>
-      <div>{company.address}</div>
+      <ModifiableField text={company.name} onChange={handleNameChange} />
+      <ModifiableField text={company.address} onChange={handleAddressChange} />
     </TableRow>
   );
 });

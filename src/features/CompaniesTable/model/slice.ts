@@ -52,6 +52,14 @@ export const tableSlice = createSlice({
     removeSelected: (state) => {
       state.items = state.items.filter((item) => !item.checked);
     },
+    setData: (
+      state,
+      action: PayloadAction<{ id: string } & Partial<Company>>,
+    ) => {
+      state.items = state.items.map((item) =>
+        item.id === action.payload.id ? { ...item, ...action.payload } : item,
+      );
+    },
   },
 });
 
@@ -63,4 +71,5 @@ export const {
   unselectAll,
   removeSelected,
   setCheckedById,
+  setData,
 } = tableSlice.actions;
