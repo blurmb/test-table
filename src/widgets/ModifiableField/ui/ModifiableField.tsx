@@ -1,6 +1,6 @@
 import { AppButton } from "@src/share/ui/AppButton";
 import { AppTextInput } from "@src/share/ui/AppTextInput";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 import * as styles from "./ModifiableField.module.scss";
 
@@ -12,7 +12,13 @@ interface ModifiableFieldProps {
 export const ModifiableField = ({ text, onChange }: ModifiableFieldProps) => {
   const [isChanging, setIsChanging] = useState(false);
   const [newText, setNewText] = useState(text);
+  const inputRef = useRef<HTMLInputElement>(null);
 
+  useEffect(() => {
+    if (isChanging && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [isChanging]);
   useEffect(() => {
     setIsChanging(false);
     setNewText(text);
@@ -36,6 +42,7 @@ export const ModifiableField = ({ text, onChange }: ModifiableFieldProps) => {
       <div className={styles.wrapper}>
         <AppTextInput
           className={styles.child}
+          ref={inputRef}
           size="small"
           value={newText}
           onChange={handleTextChange}
