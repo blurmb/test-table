@@ -10,6 +10,7 @@ import {
 import { TableRow } from "./CompanyRow";
 import { VirtualizedTable } from "./VirtualizedTable";
 import { isAllChecked } from "../model/selectors";
+import { AppButton } from "@src/share/ui/AppButton";
 
 export const CompaniesTable = () => {
   return (
@@ -55,8 +56,8 @@ const SelectionButtons = () => {
 
   return (
     <div className={styles.buttons_container}>
-      <button onClick={handleToggle}>{text}</button>
-      <button onClick={handleDeleteSelected}>Удалить выбранные</button>
+      <AppButton onClick={handleToggle}>{text}</AppButton>
+      <AppButton onClick={handleDeleteSelected}>Удалить выбранные</AppButton>
     </div>
   );
 };
@@ -86,7 +87,7 @@ const NewCompanyForm = () => {
         value={newCompanyAddress}
         onChange={(e) => setNewCompanyAddress(e.target.value)}
       />
-      <button onClick={handleAddCompany}>Добавить</button>
+      <AppButton onClick={handleAddCompany}>Добавить</AppButton>
     </div>
   );
 };
