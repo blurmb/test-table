@@ -1,9 +1,8 @@
 import React from "react";
 import { AutoSizer, WindowScroller } from "react-virtualized";
 import List, { ListRowRenderer } from "react-virtualized/dist/es/List";
-import { Company } from "@src/entities/Company";
 import { CompanyRow } from "./CompanyRow";
-import { useAppDispatch, useAppSelector } from "@src/store/hooks";
+import { useAppSelector } from "@src/store/hooks";
 import { getCompanies } from "../model/selectors";
 
 interface VirtualizedTableProps {
