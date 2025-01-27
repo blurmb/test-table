@@ -1,0 +1,63 @@
+.table_container {
+  display: flex;
+  flex-direction: column;
+
+  .controls_container {
+    display: flex;
+    justify-content: space-between;
+
+    .buttons_container {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    button {
+      background-color: var(--primary-color);
+      color: var(--text-color-secondary);
+      border: none;
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: var(--secondary-color);
+    }
+
+    /* Стили для инпутов типа text */
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      font-size: 16px;
+      color: var(--text-color-primary);
+      background-color: var(--background-color);
+      transition: border-color 0.3s ease;
+    }
+
+    input[type="text"]:focus {
+      border-color: var(--primary-color);
+      outline: none;
+    }
+
+
+    .new_company_form {
+      display: flex;
+      gap: 0.5rem;
+    }
+  }
+
+  .table {
+    border-collapse: collapse;
+    background-color: var(--background-color);
+
+    .table_header {
+      display: flex;
+      background-color: var(--primary-color);
+      color: var(--text-color-secondary);
+      font-weight: bold;
+    }
+  }
+}

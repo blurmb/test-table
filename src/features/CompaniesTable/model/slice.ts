@@ -33,14 +33,34 @@ export const tableSlice = createSlice({
         item.id === action.payload ? { ...item, checked: !item.checked } : item,
       );
     },
+    setCheckedById: (
+      state,
+      action: PayloadAction<{ id: string; checked: boolean }>,
+    ) => {
+      state.items = state.items.map((item) =>
+        item.id === action.payload.id
+          ? { ...item, checked: action.payload.checked }
+          : item,
+      );
+    },
     selectAll: (state) => {
       state.items = state.items.map((item) => ({ ...item, checked: true }));
     },
     unselectAll: (state) => {
       state.items = state.items.map((item) => ({ ...item, checked: false }));
     },
+    removeSelected: (state) => {
+      state.items = state.items.filter((item) => !item.checked);
+    },
   },
 });
 
-export const { addItem, toggleChecked, removeItem, selectAll, unselectAll } =
-  tableSlice.actions;
+export const {
+  addItem,
+  toggleChecked,
+  removeItem,
+  selectAll,
+  unselectAll,
+  removeSelected,
+  setCheckedById,
+} = tableSlice.actions;
