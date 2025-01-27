@@ -9,7 +9,7 @@ import {
 } from "../model/slice";
 import { TableRow } from "./CompanyRow";
 import { VirtualizedTable } from "./VirtualizedTable";
-import { isAllChecked } from "../model/selectors";
+import { isAllChecked, isAnyChecked } from "../model/selectors";
 import { AppButton } from "@src/share/ui/AppButton";
 import { AppTextInput } from "@src/share/ui/AppTextInput";
 
@@ -29,6 +29,7 @@ export const CompaniesTable = () => {
           </TableRow>
         </div>
         <VirtualizedTable rowHeight={50} />
+        {/* тут можно трекать достижение дна и диспатчить фетч новых компаний*/}
       </div>
     </div>
   );
@@ -37,6 +38,7 @@ export const CompaniesTable = () => {
 const SelectionButtons = () => {
   const dispatch = useAppDispatch();
   const isAllSelected = useAppSelector(isAllChecked);
+  const isAnySelected = useAppSelector(isAnyChecked);
   const [text, setText] = useState("Выделить все");
 
   useEffect(() => {
@@ -58,7 +60,9 @@ const SelectionButtons = () => {
   return (
     <div className={styles.buttons_container}>
       <AppButton onClick={handleToggle}>{text}</AppButton>
-      <AppButton onClick={handleDeleteSelected}>Удалить выбранные</AppButton>
+      <AppButton disabled={!isAnySelected} onClick={handleDeleteSelected}>
+        Удалить выбранные
+      </AppButton>
     </div>
   );
 };

@@ -10,3 +10,6 @@ export const getCompanyByIndex = (index: number) => (state: RootState) =>
 
 export const isAllChecked = (state: RootState) =>
   state.table.items.length && state.table.items.every((item) => item.checked);
+
+export const isAnyChecked = (state: RootState) =>
+  state.table.items.length && state.table.items.some((item) => item.checked);
