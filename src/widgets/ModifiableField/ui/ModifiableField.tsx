@@ -13,6 +13,10 @@ export const ModifiableField = ({ text, onChange }: ModifiableFieldProps) => {
   const [isChanging, setIsChanging] = useState(false);
   const [newText, setNewText] = useState(text);
 
+  useEffect(() => {
+    setIsChanging(false);
+    setNewText(text);
+  }, [text]);
   const handleTextClick = () => {
     setIsChanging(true);
   };
