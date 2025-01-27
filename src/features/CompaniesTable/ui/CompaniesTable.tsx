@@ -90,7 +90,12 @@ const NewCompanyForm = () => {
         value={newCompanyAddress}
         onChange={(e) => setNewCompanyAddress(e.target.value)}
       />
-      <AppButton onClick={handleAddCompany}>Добавить</AppButton>
+      <AppButton
+        disabled={!newCompanyName || !newCompanyAddress}
+        onClick={handleAddCompany}
+      >
+        Добавить
+      </AppButton>
     </div>
   );
 };
